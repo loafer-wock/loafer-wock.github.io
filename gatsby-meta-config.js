@@ -14,11 +14,11 @@ module.exports = {
     name: `정욱현`,
     bio: {
       role: `Cloud Engineer & Solutions Architect `,
-      description: ['클라우드 전문가', '궁금증이 많은', '새로운 것을 좋아하는'],
-      thumbnail: 'memoji.png', // Path to the image in the 'asset' folder
+      description: ['클라우드 전문가', '궁금증이 많은', '배우는걸 좋아하는'],
+      thumbnail: '/memoji.png', // Path to the image in the 'asset' folder
     },
     social: {
-      github: ``, // `https://github.com/zoomKoding`,
+      github: `https://github.com/loafer-wock`, // `https://github.com/zoomKoding`,
       linkedIn: ``, // `https://www.linkedin.com/in/jinhyeok-jeong-800871192`,
       email: ``, // `zoomkoding@gmail.com`,
     },

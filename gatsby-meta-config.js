@@ -13,12 +13,12 @@ module.exports = {
   author: {
     name: `정욱현`,
     bio: {
-      role: `Cloud Engineer & Solutions Architect `,
-      description: ['클라우드 전문가', '궁금증이 많은', '배우는걸 좋아하는'],
+      role: ``,
+      description: ['Cloud Engineer'],//['Cloud Engineer & Solutions Architect'],//['바보', '멍청이'],
       thumbnail: '/memoji.png', // Path to the image in the 'asset' folder
     },
     social: {
-      github: `https://github.com/loafer-wock`, // `https://github.com/zoomKoding`,
+      github: ``, // `https://github.com/zoomKoding`,
       linkedIn: ``, // `https://www.linkedin.com/in/jinhyeok-jeong-800871192`,
       email: ``, // `zoomkoding@gmail.com`,
     },
@@ -42,31 +42,40 @@ module.exports = {
       },
       // ========================================================
       // ========================================================
+      //{
+      //  date: '2023.01 ~ ',
+      //  activity: 'Megazone Cloud(Seoul, South Korea) / AWS Solutions Architect',
+      //  links: {
+      //    post: '/gatsby-starter-zoomkoding-introduction',
+      //    github: 'https://github.com/loafer-wock/loafer-wock.github.io',
+      //    demo: 'https://github.com/loafer-wock',
+      //  },
+      //},
       {
         date: '2018.10 ~ 2020.10',
-        activity: 'Netmarble(Seoul, South Korea) / Security Solution Engineer',
+        activity: 'Netmarble(Seoul, South Korea) | Security Solution Engineer',
         links: {
-          post: '/gatsby-starter-zoomkoding-introduction',
-          github: 'https://github.com/loafer-wock/loafer-wock.github.io',
-          demo: 'https://github.com/loafer-wock',
+          post: '',
+          github: '',
+          demo: '',
         },
       },
       {
         date: '2020.12 ~ 2022.12',
-        activity: 'Cloudgram(Seoul, South Korea) / AWS Solutions Architect',
+        activity: 'Cloudgram(Seoul, South Korea) | AWS Solutions Architect',
         links: {
-          post: '/gatsby-starter-zoomkoding-introduction',
-          github: 'https://github.com/loafer-wock/loafer-wock.github.io',
-          demo: 'https://github.com/loafer-wock',
+          post: '',
+          github: '',
+          demo: '',
         },
       },
       {
         date: '2023.01 ~ ',
-        activity: 'Megazone Cloud(Seoul, South Korea) / AWS Solutions Architect',
+        activity: 'Megazone Cloud(Seoul, South Korea) | AWS Solutions Architect',
         links: {
-          post: '/gatsby-starter-zoomkoding-introduction',
-          github: 'https://github.com/loafer-wock/loafer-wock.github.io',
-          demo: 'https://github.com/loafer-wock',
+          post: '',
+          github: '',
+          demo: '',
         },
       },
     ],

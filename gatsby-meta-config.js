@@ -3,7 +3,7 @@ module.exports = {
   description: `욱현의 기술블로그`,
   language: `ko`, // `ko`, `en` => currently support versions for Korean and English
   siteUrl: `https://loafer-wock.github.io`,
-  ogImage: `/memoji.png`, // Path to your in the 'static' folder
+  ogImage: `/memoji_wock.png`, // Path to your in the 'static' folder
   comments: {
     utterances: {
       repo: ``, // `zoomkoding/zoomkoding-gatsby-blog`,
@@ -15,7 +15,7 @@ module.exports = {
     bio: {
       role: ``,
       description: ['Cloud Engineer'],//['Cloud Engineer & Solutions Architect'],//['바보', '멍청이'],
-      thumbnail: '/memoji.png', // Path to the image in the 'asset' folder
+      thumbnail: '/memoji_wock.png', // Path to the image in the 'asset' folder
     },
     social: {
       github: ``, // `https://github.com/zoomKoding`,

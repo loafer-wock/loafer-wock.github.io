@@ -1,5 +1,5 @@
 module.exports = {
-  title: `loafer-wock.github.com`,
+  title: `loafer-wock.github.io`,
   description: `욱현의 기술블로그`,
   language: `ko`, // `ko`, `en` => currently support versions for Korean and English
   siteUrl: `https://loafer-wock.github.io`,
@@ -14,7 +14,7 @@ module.exports = {
     name: `정욱현`,
     bio: {
       role: `Cloud Engineer & Solutions Architect `,
-      description: ['사람에 가치를 두는', '능동적으로 일하는', '이로운 것을 만드는'],
+      description: ['클라우드 전문가', '궁금증이 많은', '새로운 것을 좋아하는'],
       thumbnail: 'sample.png', // Path to the image in the 'asset' folder
     },
     social: {

@@ -3,7 +3,7 @@ module.exports = {
   description: `욱현의 기술블로그`,
   language: `ko`, // `ko`, `en` => currently support versions for Korean and English
   siteUrl: `https://loafer-wock.github.io`,
-  ogImage: `/og-image.png`, // Path to your in the 'static' folder
+  ogImage: `/memoji.png`, // Path to your in the 'static' folder
   comments: {
     utterances: {
       repo: ``, // `zoomkoding/zoomkoding-gatsby-blog`,
@@ -43,12 +43,12 @@ module.exports = {
       // ========================================================
       // ========================================================
       {
-        date: '2021.02 ~',
-        activity: '개인 블로그 개발 및 운영',
+        date: '2023.08 ~',
+        activity: '블로그 생성',
         links: {
           post: '/gatsby-starter-zoomkoding-introduction',
-          github: 'https://github.com/zoomkoding/zoomkoding-gatsby-blog',
-          demo: 'https://www.zoomkoding.com',
+          github: 'https://github.com/loafer-wock/loafer-wock.github.io',
+          demo: 'https://github.com/loafer-wock',
         },
       },
     ],

@@ -24,7 +24,7 @@ module.exports = {
     },
   },
 
-  // metadata for About Page
+  // metadata for About Page1
   about: {
     timestamps: [
       // =====       [Timestamp Sample and Structure]      =====

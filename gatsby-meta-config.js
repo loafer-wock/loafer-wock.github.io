@@ -23,8 +23,8 @@ module.exports = {
       email: ``, // `zoomkoding@gmail.com`,
     },
   },
-
-  // metadata for About Page1
+  
+  // metadata for About Page
   about: {
     timestamps: [
       // =====       [Timestamp Sample and Structure]      =====

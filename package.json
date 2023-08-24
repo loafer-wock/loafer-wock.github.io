@@ -61,8 +61,5 @@
   },
   "bugs": {
     "url": "https://github.com/zoomkoding/zoomkoding-gatsby-blog/issues"
-  },
-  "scripts": {
-    "deploy": "gatsby build && gh-pages -d public"
   }
 }

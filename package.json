@@ -66,6 +66,6 @@
 
 {
   "scripts": {
-    "deploy": "gatsby build && gh-pages -d public" // 추가
+    "deploy": "gatsby build && gh-pages -d public"
   }
 }

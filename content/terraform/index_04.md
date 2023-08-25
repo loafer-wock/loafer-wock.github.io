@@ -156,3 +156,6 @@ resource "aws_subnet" "db_subnet_2c" {
 VPC와 Subnet으로 끝나는 것이 아닌 AWS VPC Network 기본인 항목들을 만들어서 배포해봐야한다. ```IGW```, ```NAT```, ```RouteTable```, ```NACL``` 등 관리해야하는 리소스들이 있으니 한번 만들어 봤으면 좋겠다!!
 
 다음 편은 위에 만든 Code를 Module화 하는 것이다! 
+
+```toc
+```

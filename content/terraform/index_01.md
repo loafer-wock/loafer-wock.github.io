@@ -1,6 +1,6 @@
 ---
 emoji: 😀
-title: velog terraform 마이그레이션 테스트
+title: 00. 테라폼(Terraform)이 뭔데?
 date: '2023-08-25 00:00:00'
 author: 정욱현
 tags: terraform
@@ -10,17 +10,16 @@ categories: terraform
 ## 테라폼이 먼데이
 
 
-
 ### 테라폼을 만났을때
 
 ![](https://velog.velcdn.com/images/jtret2424/post/2882317b-5e80-47cf-8e9e-d984da1194f9/image.gif)
 
 
 
-내가 AWS SA 포지션으로 입사한지 얼마 안되었을때 Terraform를 알게 되었다.
+내가 AWS SA 포지션으로 입사한지 얼마 안되었을때 Terraform를 알게 되었다. 
 코드로 인프라를 관리한다고 하더라..
 
-근데 본인은 코드(Code)와 친한 편이 아니라 간편하게 UI에서 "클릭"으로 만드는게 더 쉬웠고
+근데 본인은 코드(Code)와 친한 편이 아니라 간편하게 UI에서 "클릭"으로 만드는게 더 쉬웠고,
 사실 AWS UI,CLI 등 일단 있는거 부터 잘 다뤄야 코드로 표현해서 구축 하는게 맞다고 봤다..
 ~~(사실 어려워서 배우기 힘들었던건 비밀..)~~
 
@@ -51,3 +50,6 @@ Terraform Code로 AWS를 간단하게 구축 할 수 있는 가이드 문서를 
 
 ![](https://velog.velcdn.com/images/jtret2424/post/8af64f68-6466-4b60-987c-f1c98c0a3b4e/image.gif)
 ~~아무튼.. 만들고 동작하니까 괜찮지 않을까..?~~
+
+```toc
+```

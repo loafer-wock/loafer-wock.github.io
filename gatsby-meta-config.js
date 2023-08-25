@@ -9,18 +9,18 @@ module.exports = {
       repo: ``, // `zoomkoding/zoomkoding-gatsby-blog`,
     },
   },
-  ga: '0', // Google Analytics Tracking ID
+  ga: 'G-D6JTHH3ZM6', // Google Analytics Tracking ID
   author: {
     name: `정욱현`,
     bio: {
       role: ``,
-      description: ['Cloud Engineer'],//['Cloud Engineer & Solutions Architect'],//['바보', '멍청이'],
-      thumbnail: '/memoji_wock.png', // Path to the image in the 'asset' folder
+      description: ['Cloud Engineer', 'Solutions Architect'],//['Cloud Engineer & Solutions Architect'],//['바보', '멍청이'],
+      thumbnail: 'memoji_wock.png', // Path to the image in the 'asset' folder
     },
     social: {
-      github: ``, // `https://github.com/zoomKoding`,
-      linkedIn: ``, // `https://www.linkedin.com/in/jinhyeok-jeong-800871192`,
-      email: ``, // `zoomkoding@gmail.com`,
+      github: `https://github.com/loafer-wock`, // `https://github.com/zoomKoding`,
+      linkedIn: `https://www.linkedin.com/in/%EC%9A%B1%ED%98%84-%EC%A0%95-2284b0215`, // `https://www.linkedin.com/in/jinhyeok-jeong-800871192`,
+      email: `jtret2423@gmail.com`, // `zoomkoding@gmail.com`,
     },
   },
   

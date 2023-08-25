@@ -102,7 +102,7 @@ module.exports = {
       {
         title: '프로젝트',
         description:
-          'AWS EKS를 활용한 뭐시깽이',
+          'AWS EKS를 활용한 뭐시깽이1123123', //맞지맞지??
         techStack: ['AWS Cloud1', 'Kubernetes'],
         thumbnailUrl: '',
         links: {

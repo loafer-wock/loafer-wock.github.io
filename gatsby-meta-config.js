@@ -3,7 +3,7 @@ module.exports = {
   description: `욱현이의 기술블로그`,
   language: `ko`, // `ko`, `en` => currently support versions for Korean and English
   siteUrl: `https://loafer-wock.github.io`,
-  ogImage: `/memoji_wock.png`, // Path to your in the 'static' folder
+  ogImage: `blog.png`, // Path to your in the 'static' folder
   comments: {
     utterances: {
       repo: ``, // `zoomkoding/zoomkoding-gatsby-blog`,

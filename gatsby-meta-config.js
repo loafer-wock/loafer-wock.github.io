@@ -15,7 +15,7 @@ module.exports = {
     bio: {
       role: ``,
       description: ['Cloud Engineer', 'Solutions Architect'],//['Cloud Engineer & Solutions Architect'],//['바보', '멍청이'],
-      thumbnail: 'memoji_wock.png', // Path to the image in the 'asset' folder
+      thumbnail: 'memoji_01.png', // Path to the image in the 'asset' folder
     },
     social: {
       github: `https://github.com/loafer-wock`, // `https://github.com/zoomKoding`,

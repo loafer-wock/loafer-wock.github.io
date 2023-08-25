@@ -1,5 +1,5 @@
 module.exports = {
-  title: `loafer-wock.github.io`,
+  title: `loafer-wock.github.io`, //이게 타이틀~
   description: `욱현의 기술블로그`,
   language: `ko`, // `ko`, `en` => currently support versions for Korean and English
   siteUrl: `https://loafer-wock.github.io`,

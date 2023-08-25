@@ -4,7 +4,7 @@ title: 테스트 이모지입니다.
 date: '2023-08-25 00:00:00'
 author: 정욱현
 tags: 테스트
-categories: 테스트 카테고리
+categories: 테스트
 ---
 
 ## 1. 제목일꺼같아요
@@ -40,11 +40,17 @@ print(c)
 
 사진은 어떻게 추가하면될까요?
 ```
-![사진](./[이미지 파일명])
+![사진](test_chrome.PNG)
 ```
 
-![사진](test_chrome.png)
-![사진](./test_chrome.png)
+![사진](test_chrome.PNG)
+
+![rein_01.HEIC](rein_01.HEIC)
+
+![rein_02.heic](rein_02.heic)
+
+사진의 이름은 대소문자를 가려요 제대로 써야해요
+
 
 
 ```toc

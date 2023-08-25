@@ -1,6 +1,6 @@
 ---
 emoji: 😀
-title: velog 마이그레이션 테스트.
+title: AWS Re:invent 2022 후기.
 date: '2023-08-25 00:00:00'
 author: 정욱현
 tags: 일상

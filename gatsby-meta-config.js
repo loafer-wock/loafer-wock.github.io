@@ -100,10 +100,70 @@ module.exports = {
       // About의 Project 부분
       // ========================================================
       {
-        title: '프로젝트',
+        title: '캐나다 엔터프라이즈 인프라 환경 마이그레이션 프로젝트',
         description:
-          'AWS EKS를 활용한 뭐시깽이1123123', //맞지맞지??
-        techStack: ['AWS Cloud1', 'Kubernetes'],
+          '북미 인프라 캐나다 서비스 마이그레이션', //123
+        techStack: ['AWS Cloud', 'Migration'],
+        thumbnailUrl: '',
+        links: {
+          post: '',
+          github: '',
+          demo: '',
+        },
+      },
+      {
+        title: '금융고객사 AI콜봇 인프라 구축',
+        description:
+          'AWS LandingZone 환경 인프라 구축', //123
+        techStack: ['AWS Cloud', 'Docker', 'Landingzone'],
+        thumbnailUrl: '',
+        links: {
+          post: '',
+          github: '',
+          demo: '',
+        },
+      },
+      {
+        title: '국내 엔터프라이즈 ERP AWS 마이그레이션 구축',
+        description:
+          'IDC환경에서 AWS Cloud 마이그레이션 구축', //123
+        techStack: ['Terraform', 'AWS Cloud', 'Site to Site VPN'],
+        thumbnailUrl: '',
+        links: {
+          post: '',
+          github: '',
+          demo: '',
+        },
+      },
+      {
+        title: '국내 방위산업체 클러스터 구축',
+        description:
+          'AWS EKS를 활용한 MSA환경 구축 및 대규모 IoT센터 데이터 처리 환경 구축', //123
+        techStack: ['Terraform', 'AWS Cloud', 'AWS EKS for Kubernetes', 'Site to Site VPN'],
+        thumbnailUrl: '',
+        links: {
+          post: '',
+          github: '',
+          demo: '',
+        },
+      },
+      {
+        title: '국내 교육관련 미디어 서비스 구축 프로젝트',
+        description:
+          '국내 교육업체 CDN 미디어 서비스 구축', //123
+        techStack: ['Terraform', 'AWS Cloud', 'CI/CD', 'Lambda', 'CDN'],
+        thumbnailUrl: '',
+        links: {
+          post: '',
+          github: '',
+          demo: '',
+        },
+      },
+      {
+        title: '경남교육청 주관 국제컨퍼런스 강연',
+        description:
+          'AWS Cloud9를 활용한 코딩교육 강연', //123
+        techStack: ['AWS Cloud', 'Cloud9'],
         thumbnailUrl: '',
         links: {
           post: '',

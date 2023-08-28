@@ -18,9 +18,9 @@ module.exports = {
       thumbnail: 'memoji_01.png', // Path to the image in the 'asset' folder
     },
     social: {
-      github: `https://github.com/loafer-wock`, // `https://github.com/zoomKoding`,
-      linkedIn: `https://www.linkedin.com/in/%EC%9A%B1%ED%98%84-%EC%A0%95-2284b0215`, // `https://www.linkedin.com/in/jinhyeok-jeong-800871192`,
-      email: `jtret2423@gmail.com`, // `zoomkoding@gmail.com`,
+      github: `https://github.com/loafer-wock`,
+      linkedIn: `https://www.linkedin.com/in/%EC%9A%B1%ED%98%84-%EC%A0%95-2284b0215`,
+      email: `jtret2423@gmail.com`, 
     },
   },
   

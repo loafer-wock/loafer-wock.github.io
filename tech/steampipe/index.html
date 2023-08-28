@@ -81,12 +81,12 @@
 <ol>
 <li>Steampipe Install</li>
 </ol>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ sudo /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/turbot/steampipe/main/install.sh)"
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">sudo</span> /bin/sh <span class="token parameter variable">-c</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> <span class="token parameter variable">-fsSL</span> https://raw.githubusercontent.com/turbot/steampipe/main/install.sh<span class="token variable">)</span></span>"</span>
 </code></pre></div>
 <ol start="2">
 <li>Steampipe AWS Plugin Install</li>
 </ol>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ steampip plugin install aws</code></pre></div>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ steampip plugin <span class="token function">install</span> aws</code></pre></div>
 <hr>
 <h3 id="2-3-aws-configure-설정" style="position:relative;"><a href="#2-3-aws-configure-%EC%84%A4%EC%A0%95" aria-label="2 3 aws configure 설정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2-3. AWS Configure 설정</h3>
 <p><code class="language-text">steampipe</code>사용하기 전에 <code class="language-text">aws configure</code> 설정을 하자</p>
@@ -97,16 +97,16 @@
 <h3 id="2-4-query-해보기" style="position:relative;"><a href="#2-4-query-%ED%95%B4%EB%B3%B4%EA%B8%B0" aria-label="2 4 query 해보기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2-4. Query 해보기</h3>
 <p>생성한 <code class="language-text">VPC Name Tag</code>를 가져와보자!</p>
 <p>먼저 <code class="language-text">steampipe query</code> 에 접속을 하고 쓸수 있는 <code class="language-text">tables</code> 목록을 보자</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ steampipe query
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ steampipe query
 
-> .tables
-==> aws</code></pre></div>
+<span class="token operator">></span> .tables
+<span class="token operator">==</span><span class="token operator">></span> aws</code></pre></div>
 <p><img src="https://velog.velcdn.com/images/jtret2424/post/fa103279-a925-40c5-81f5-9cd6a052502f/image.png" alt="">
 <code class="language-text">steampipe query</code>에서 <code class="language-text">.tables</code> 명령어를 치면 <code class="language-text">AWS Table</code>를 확인 할 수 있다.
 이 <code class="language-text">Table</code>를 활용해서 VPC 목록을 조회해보자!</p>
 <h3 id="2-5-inspect-tables-name" style="position:relative;"><a href="#2-5-inspect-tables-name" aria-label="2 5 inspect tables name permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2-5. .inspect [Tables Name]</h3>
 <p>아래 명령을 사용하면 <code class="language-text">aws_vpc</code>에서 사용가능한 <code class="language-text">column</code> 확인이 가능하다!</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">.inspect aws_vpc				</code></pre></div>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">.inspect aws_vpc				</code></pre></div>
 <p><img src="https://velog.velcdn.com/images/jtret2424/post/a653822d-cb7a-4aec-aba6-1c3f54f43f8f/image.png" alt=""></p>
 <blockquote>
 <p><code class="language-text">column</code>에서 <code class="language-text">type</code>별로 표현형태가 다르다.</p>
@@ -114,32 +114,32 @@
 <p>예로, account_id는 text 형태이지만, tags는 json 형태다.</p>
 <hr>
 <h3 id="2-6-select-column-from-table" style="position:relative;"><a href="#2-6-select-column-from-table" aria-label="2 6 select column from table permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2-6. select [column] from [table]</h3>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">select
+<div class="gatsby-highlight" data-language="sql"><pre class="language-sql"><code class="language-sql"><span class="token keyword">select</span>
 	tags
-from
+<span class="token keyword">from</span>
 	aws_vpc</code></pre></div>
 <p><img src="https://velog.velcdn.com/images/jtret2424/post/7e66961f-ce59-4125-8417-45827b85c972/image.png" alt=""></p>
 <h3 id="2-6-instance" style="position:relative;"><a href="#2-6-instance" aria-label="2 6 instance permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2-6. Instance</h3>
 <p>생성된 EC2의 <code class="language-text">ID</code>, <code class="language-text">Type</code>, <code class="language-text">IP</code>, <code class="language-text">Tags</code>를 가져와보자.</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">> select 
-	instance_id,
-	instance_type,
-	private_ip_address,tags 
-from 
+<div class="gatsby-highlight" data-language="sql"><pre class="language-sql"><code class="language-sql"><span class="token operator">></span> <span class="token keyword">select</span> 
+	instance_id<span class="token punctuation">,</span>
+	instance_type<span class="token punctuation">,</span>
+	private_ip_address<span class="token punctuation">,</span>tags 
+<span class="token keyword">from</span> 
 	aws_ec2_instance</code></pre></div>
 <p><img src="https://velog.velcdn.com/images/jtret2424/post/e542d3c4-47f5-4b63-b82d-cbc15c0aa886/image.png" alt=""></p>
 <hr>
 <h2 id="3-특정-type-값만-가져오기" style="position:relative;"><a href="#3-%ED%8A%B9%EC%A0%95-type-%EA%B0%92%EB%A7%8C-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0" aria-label="3 특정 type 값만 가져오기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. 특정 Type 값만 가져오기</h2>
 <p>EC2의 <code class="language-text">Type</code>값을 가지고 있는 목록 불러와보자!</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">> select 
-	instance_id,
-	instance_type,
-	private_ip_address,
+<div class="gatsby-highlight" data-language="sql"><pre class="language-sql"><code class="language-sql"><span class="token operator">></span> <span class="token keyword">select</span> 
+	instance_id<span class="token punctuation">,</span>
+	instance_type<span class="token punctuation">,</span>
+	private_ip_address<span class="token punctuation">,</span>
 	tags 
-from 
+<span class="token keyword">from</span> 
 	aws_ec2_instance 
-where 
-	instance_type='c5.xlarge'</code></pre></div>
+<span class="token keyword">where</span> 
+	instance_type<span class="token operator">=</span><span class="token string">'c5.xlarge'</span></code></pre></div>
 <p><img src="https://velog.velcdn.com/images/jtret2424/post/fbfa2487-1181-4864-9dee-7c60c41c2bc3/image.png" alt=""></p>
 <hr>
 <div class="table-of-contents">

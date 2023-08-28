@@ -94,94 +94,94 @@
 <blockquote>
 <p><code class="language-text">configuration:latency=0</code>이 아닌 <code class="language-text">nouveau</code> 포함되어 있다면 <code class="language-text">BlockList</code> 등록 필요</p>
 </blockquote>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">#lshw는 기본적으로 설치되어 있지만 없다면 아래 명령어로 설치
-#sudo yum install lshw 
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token comment">#lshw는 기본적으로 설치되어 있지만 없다면 아래 명령어로 설치</span>
+<span class="token comment">#sudo yum install lshw </span>
 
-lshw -numeric -C display
+lshw <span class="token parameter variable">-numeric</span> <span class="token parameter variable">-C</span> display
 
-[sysadmin@ip-10-200-1-172 ~]$ lshw -numeric -C display
+<span class="token punctuation">[</span>sysadmin@ip-10-200-1-172 ~<span class="token punctuation">]</span>$ lshw <span class="token parameter variable">-numeric</span> <span class="token parameter variable">-C</span> display
 WARNING: you should run this program as super-user.
   *-display:0 UNCLAIMED
        ~~~~
   *-display:1
        description: 3D controller
-       product: TU104GL [Tesla T4] [10DE:1EB8]
-       vendor: NVIDIA Corporation [10DE]
+       product: TU104GL <span class="token punctuation">[</span>Tesla T4<span class="token punctuation">]</span> <span class="token punctuation">[</span>10DE:1EB8<span class="token punctuation">]</span>
+       vendor: NVIDIA Corporation <span class="token punctuation">[</span>10DE<span class="token punctuation">]</span>
        physical id: 1e
        bus info: pci@0000:00:1e.0
        version: a1
-       width: 64 bits
+       width: <span class="token number">64</span> bits
        clock: 33MHz
        capabilities: bus_master cap_list
-       configuration:latency=0 #&lt;&lt; 이 부분이 nouveau 포함되어 있다면 "disable 필요" 
+       configuration:latency<span class="token operator">=</span><span class="token number">0</span> <span class="token comment">#&lt;&lt; 이 부분이 nouveau 포함되어 있다면 "disable 필요" </span>
        resources: iomemory:40-3f iomemory:40-3f irq:10 memory:fd000000-fdffffff memory:440000000-44fffffff memory:450000000-451ffffff</code></pre></div>
 <hr>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">#nouveau driver disable 방법
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token comment">#nouveau driver disable 방법</span>
 
-1. /etc/default/grep 수정
+<span class="token number">1</span>. /etc/default/grep 수정
 ---
-sudo vi /etc/default/grub
+<span class="token function">sudo</span> <span class="token function">vi</span> /etc/default/grub
 
-GRUB_TIMEOUT=1
-GRUB_DISTRIBUTOR="$(sed 's, release .*$,,g' /etc/system-release)"
-GRUB_DEFAULT=saved
-GRUB_DISABLE_SUBMENU=true
-GRUB_TERMINAL_OUTPUT="console"
-GRUB_CMDLINE_LINUX="console=ttyS0,115200n8 console=tty0 net.ifnames=0 rd.blacklist=nouveau nvme_core.io_timeout=4294967295 crashkernel=auto"
-GRUB_DISABLE_RECOVERY="true"
-GRUB_ENABLE_BLSCFG=true
+<span class="token assign-left variable">GRUB_TIMEOUT</span><span class="token operator">=</span><span class="token number">1</span>
+<span class="token assign-left variable">GRUB_DISTRIBUTOR</span><span class="token operator">=</span><span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">sed</span> <span class="token string">'s, release .*$,,g'</span> /etc/system-release<span class="token variable">)</span></span>"</span>
+<span class="token assign-left variable">GRUB_DEFAULT</span><span class="token operator">=</span>saved
+<span class="token assign-left variable">GRUB_DISABLE_SUBMENU</span><span class="token operator">=</span>true
+<span class="token assign-left variable">GRUB_TERMINAL_OUTPUT</span><span class="token operator">=</span><span class="token string">"console"</span>
+<span class="token assign-left variable">GRUB_CMDLINE_LINUX</span><span class="token operator">=</span><span class="token string">"console=ttyS0,115200n8 console=tty0 net.ifnames=0 rd.blacklist=nouveau nvme_core.io_timeout=4294967295 crashkernel=auto"</span>
+<span class="token assign-left variable">GRUB_DISABLE_RECOVERY</span><span class="token operator">=</span><span class="token string">"true"</span>
+<span class="token assign-left variable">GRUB_ENABLE_BLSCFG</span><span class="token operator">=</span>true
 ---
 
-GRUB_CMDLINE_LINUX구분"console=ttyS~~" 안 끝에 noveau.modeset=0추가 </code></pre></div>
+GRUB_CMDLINE_LINUX구분<span class="token string">"console=ttyS~~"</span> 안 끝에 <span class="token assign-left variable">noveau.modeset</span><span class="token operator">=</span><span class="token number">0</span>추가 </code></pre></div>
 <hr>
 <h3 id="1-2-그래픽-드라이버-설치-전에-필요한-패키지-code-classlanguage-textyum-installcode" style="position:relative;"><a href="#1-2-%EA%B7%B8%EB%9E%98%ED%94%BD-%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B2%84-%EC%84%A4%EC%B9%98-%EC%A0%84%EC%97%90-%ED%95%84%EC%9A%94%ED%95%9C-%ED%8C%A8%ED%82%A4%EC%A7%80-code-classlanguage-textyum-installcode" aria-label="1 2 그래픽 드라이버 설치 전에 필요한 패키지 code classlanguage textyum installcode permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1-2. 그래픽 드라이버 설치 전에 필요한 패키지 <code class="language-text">yum install</code></h3>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">sudo yum install gcc -y
-sudo yum install perl -y
-sudo yum install kernel-headers -y
-sudo yum install vulkan-loader -y
-sudo yum install pkg-config xorg-dev -y
-sudo yum group install -y "Development Tools"
-sudo yum install kernel-devel-$(uname -r) kernel-headers-$(uname -r)</code></pre></div>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> yum <span class="token function">install</span> gcc <span class="token parameter variable">-y</span>
+<span class="token function">sudo</span> yum <span class="token function">install</span> perl <span class="token parameter variable">-y</span>
+<span class="token function">sudo</span> yum <span class="token function">install</span> kernel-headers <span class="token parameter variable">-y</span>
+<span class="token function">sudo</span> yum <span class="token function">install</span> vulkan-loader <span class="token parameter variable">-y</span>
+<span class="token function">sudo</span> yum <span class="token function">install</span> pkg-config xorg-dev <span class="token parameter variable">-y</span>
+<span class="token function">sudo</span> yum group <span class="token function">install</span> <span class="token parameter variable">-y</span> <span class="token string">"Development Tools"</span>
+<span class="token function">sudo</span> yum <span class="token function">install</span> kernel-devel-<span class="token variable"><span class="token variable">$(</span><span class="token function">uname</span> <span class="token parameter variable">-r</span><span class="token variable">)</span></span> kernel-headers-<span class="token variable"><span class="token variable">$(</span><span class="token function">uname</span> <span class="token parameter variable">-r</span><span class="token variable">)</span></span></code></pre></div>
 <h3 id="1-3-xorg-server-중지" style="position:relative;"><a href="#1-3-xorg-server-%EC%A4%91%EC%A7%80" aria-label="1 3 xorg server 중지 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1-3. Xorg server 중지</h3>
 <blockquote>
 <p>xorg를 중지하지 않으면 설치 진행 안됨</p>
 </blockquote>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">sudo systemctl isolate multi-user.target</code></pre></div>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> systemctl isolate multi-user.target</code></pre></div>
 <hr>
 <h2 id="2-그래픽-드라이버-다운로드" style="position:relative;"><a href="#2-%EA%B7%B8%EB%9E%98%ED%94%BD-%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B2%84-%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C" aria-label="2 그래픽 드라이버 다운로드 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. 그래픽 드라이버 다운로드</h2>
 <h3 id="2-1-nvidia-그래픽-드라이버-다운로드-센터" style="position:relative;"><a href="#2-1-nvidia-%EA%B7%B8%EB%9E%98%ED%94%BD-%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B2%84-%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C-%EC%84%BC%ED%84%B0" aria-label="2 1 nvidia 그래픽 드라이버 다운로드 센터 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2-1. NVIDIA 그래픽 드라이버 다운로드 센터</h3>
 <p><code class="language-text">Product Type, Series</code>등 인스턴스가 지원하는 드라이버 타입에 맞춰 설정 후 다운로드
 <img src="https://velog.velcdn.com/images/jtret2424/post/625b20ae-6283-448e-98bc-1bb5bb2d2b15/image.png" alt=""></p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">wget https://us.download.nvidia.com/tesla/525.85.12/NVIDIA-Linux-x86_64-525.85.12.run</code></pre></div>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">wget</span> https://us.download.nvidia.com/tesla/525.85.12/NVIDIA-Linux-x86_64-525.85.12.run</code></pre></div>
 <hr>
 <h2 id="3-설치" style="position:relative;"><a href="#3-%EC%84%A4%EC%B9%98" aria-label="3 설치 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. 설치</h2>
 <h3 id="3-1-다운로드-받은-code-classlanguage-textnvidia-linux-runcode-파일-실행" style="position:relative;"><a href="#3-1-%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C-%EB%B0%9B%EC%9D%80-code-classlanguage-textnvidia-linux-runcode-%ED%8C%8C%EC%9D%BC-%EC%8B%A4%ED%96%89" aria-label="3 1 다운로드 받은 code classlanguage textnvidia linux runcode 파일 실행 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3-1. 다운로드 받은 <code class="language-text">NVIDIA-Linux-*.run</code> 파일 실행</h3>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">sudo sh NVIDIA-Linux-x86_64-525.85.12.run</code></pre></div>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">sh</span> NVIDIA-Linux-x86_64-525.85.12.run</code></pre></div>
 <blockquote>
 <p>실행하게 되면 로딩 이후 아래와 같은 화면이 나오는데 긍정적(Yes, Ok 등)인 말만 선택해서 진행하도록 하자</p>
 </blockquote>
 <p><img src="https://velog.velcdn.com/images/jtret2424/post/f9f8598c-13bf-4814-8217-f2ef99f20b7f/image.png" alt=""></p>
 <h3 id="3-2-설치-확인" style="position:relative;"><a href="#3-2-%EC%84%A4%EC%B9%98-%ED%99%95%EC%9D%B8" aria-label="3 2 설치 확인 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3-2. 설치 확인</h3>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">nvidia-smi
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">nvidia-smi
 
 +-----------------------------------------------------------------------------+
-| NVIDIA-SMI 525.85.12    Driver Version: 525.85.12    CUDA Version: 12.0     |
-|-------------------------------+----------------------+----------------------+
-| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
-| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
-|                               |                      |               MIG M. |
-|===============================+======================+======================|
-|   0  Tesla T4            Off  | 00000000:00:1E.0 Off |                    0 |
-| N/A   56C    P0    28W /  70W |      2MiB / 15360MiB |      0%      Default |
-|                               |                      |                  N/A |
+<span class="token operator">|</span> NVIDIA-SMI <span class="token number">525.85</span>.12    Driver Version: <span class="token number">525.85</span>.12    CUDA Version: <span class="token number">12.0</span>     <span class="token operator">|</span>
+<span class="token operator">|</span>-------------------------------+----------------------+----------------------+
+<span class="token operator">|</span> GPU  Name        Persistence-M<span class="token operator">|</span> Bus-Id        Disp.A <span class="token operator">|</span> Volatile Uncorr. ECC <span class="token operator">|</span>
+<span class="token operator">|</span> Fan  Temp  Perf  Pwr:Usage/Cap<span class="token operator">|</span>         Memory-Usage <span class="token operator">|</span> GPU-Util  Compute M. <span class="token operator">|</span>
+<span class="token operator">|</span>                               <span class="token operator">|</span>                      <span class="token operator">|</span>               MIG M. <span class="token operator">|</span>
+<span class="token operator">|</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span><span class="token operator">+=</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span><span class="token operator">+=</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span><span class="token operator">|</span>
+<span class="token operator">|</span>   <span class="token number">0</span>  Tesla T4            Off  <span class="token operator">|</span> 00000000:00:1E.0 Off <span class="token operator">|</span>                    <span class="token number">0</span> <span class="token operator">|</span>
+<span class="token operator">|</span> N/A   56C    P0    28W /  70W <span class="token operator">|</span>      2MiB / 15360MiB <span class="token operator">|</span>      <span class="token number">0</span>%      Default <span class="token operator">|</span>
+<span class="token operator">|</span>                               <span class="token operator">|</span>                      <span class="token operator">|</span>                  N/A <span class="token operator">|</span>
 +-------------------------------+----------------------+----------------------+
 
 +-----------------------------------------------------------------------------+
-| Processes:                                                                  |
-|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
-|        ID   ID                                                   Usage      |
-|=============================================================================|
-|  No running processes found                                                 |
+<span class="token operator">|</span> Processes:                                                                  <span class="token operator">|</span>
+<span class="token operator">|</span>  GPU   GI   CI        PID   Type   Process name                  GPU Memory <span class="token operator">|</span>
+<span class="token operator">|</span>        ID   ID                                                   Usage      <span class="token operator">|</span>
+<span class="token operator">|</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span><span class="token operator">|</span>
+<span class="token operator">|</span>  No running processes found                                                 <span class="token operator">|</span>
 +-----------------------------------------------------------------------------+</code></pre></div>
 <div class="table-of-contents">
 <ul>

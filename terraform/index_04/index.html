@@ -87,23 +87,23 @@ Terraform에서는 Key를  파일에 하는 방법도 있다. 위에서 만든  
 <p>리소스를 생성하기 위해서는 IAM Key가 필요하다.
 Terraform에서는 Key를 <code class="language-text">provider.tf</code> 파일에 <code class="language-text">하드코딩</code>하는 방법도 있다.</p>
 <p>위에서 만든 <code class="language-text">terraform</code> 디렉토리 아래 <code class="language-text">provider.tf</code> 파일을 만들어서 Key를 넣어주자</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">provider "aws" {
-    access_key  = "[ACCESS KEY]"
-    secret_key  = "[SECRET_KEY]"
-    region      = "[REGION]"
-}</code></pre></div>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">provider <span class="token string">"aws"</span> <span class="token punctuation">{</span>
+    access_key  <span class="token operator">=</span> <span class="token string">"[ACCESS KEY]"</span>
+    secret_key  <span class="token operator">=</span> <span class="token string">"[SECRET_KEY]"</span>
+    region      <span class="token operator">=</span> <span class="token string">"[REGION]"</span>
+<span class="token punctuation">}</span></code></pre></div>
 <h3 id="3-2-vpc-생성" style="position:relative;"><a href="#3-2-vpc-%EC%83%9D%EC%84%B1" aria-label="3 2 vpc 생성 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3-2. VPC 생성</h3>
 <p>VPC에 생성에 필요한 소스는 아래 Terraform  document 에서 볼 수 있다.</p>
 <blockquote>
 <p><a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc">https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc</a></p>
 </blockquote>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">resource "aws_vpc" "vpc" {
-    cidr_block = "192.168.0.0/24"
-    enable_dns_hostnames = true
-    tags = {
-        Name = "vpc-terraform"
-    }
-}</code></pre></div>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">resource <span class="token string">"aws_vpc"</span> <span class="token string">"vpc"</span> <span class="token punctuation">{</span>
+    cidr_block <span class="token operator">=</span> <span class="token string">"192.168.0.0/24"</span>
+    enable_dns_hostnames <span class="token operator">=</span> <span class="token boolean">true</span>
+    tags <span class="token operator">=</span> <span class="token punctuation">{</span>
+        Name <span class="token operator">=</span> <span class="token string">"vpc-terraform"</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
 <p><code class="language-text">terraform init</code> 후 <code class="language-text">plan</code>을 실행해보고 내가 만들고 싶은 VPC가 정상적으로 동작하는지 확인해보자!
 문제가 없다면 <code class="language-text">terraform apply</code>를 통해 적용해보자!</p>
 <p><img src="https://velog.velcdn.com/images/jtret2424/post/b619a6ef-9f3e-4b1c-a51f-ef851497f77c/image.png" alt=""></p>
@@ -111,69 +111,69 @@ Terraform에서는 Key를 <code class="language-text">provider.tf</code> 파일�
 이제 Subnet를 생성해보자</p>
 <h3 id="3-3-subnet-생성" style="position:relative;"><a href="#3-3-subnet-%EC%83%9D%EC%84%B1" aria-label="3 3 subnet 생성 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3-3. Subnet 생성</h3>
 <p>Subnet은 <code class="language-text">VPC Resource</code>를 만든 <code class="language-text">network.tf</code>안에 아래와 같이 작성해보자</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">### VPC ###
-resource "aws_vpc" "vpc" {
-    cidr_block = "192.168.0.0/24"
-    enable_dns_hostnames = true
-    tags = {
-        Name = "vpc-terraform"
-    }
-}
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">### <span class="token constant">VPC</span> ###
+resource <span class="token string">"aws_vpc"</span> <span class="token string">"vpc"</span> <span class="token punctuation">{</span>
+    cidr_block <span class="token operator">=</span> <span class="token string">"192.168.0.0/24"</span>
+    enable_dns_hostnames <span class="token operator">=</span> <span class="token boolean">true</span>
+    tags <span class="token operator">=</span> <span class="token punctuation">{</span>
+        Name <span class="token operator">=</span> <span class="token string">"vpc-terraform"</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
 ### Subnet ###
-resource "aws_subnet" "dmz_subnet_2a" {
-	vpc_id = aws_vpc.vpc.id
-	cidr_block = "192.168.0.0/27"
-	availability_zone = "ap-northeast-2a"
-	tags = {
-		Name = "sub-terraform-dmz-2a"
-	}
-}
+resource <span class="token string">"aws_subnet"</span> <span class="token string">"dmz_subnet_2a"</span> <span class="token punctuation">{</span>
+	vpc_id <span class="token operator">=</span> aws_vpc<span class="token punctuation">.</span>vpc<span class="token punctuation">.</span>id
+	cidr_block <span class="token operator">=</span> <span class="token string">"192.168.0.0/27"</span>
+	availability_zone <span class="token operator">=</span> <span class="token string">"ap-northeast-2a"</span>
+	tags <span class="token operator">=</span> <span class="token punctuation">{</span>
+		Name <span class="token operator">=</span> <span class="token string">"sub-terraform-dmz-2a"</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-resource "aws_subnet" "dmz_subnet_2c" {
-	vpc_id = aws_vpc.vpc.id
-	cidr_block = "192.168.0.32/27"
-	availability_zone = "ap-northeast-2c"
-	tags = {
-		Name = "sub-terraform-dmz-2c"
-	}
-}
+resource <span class="token string">"aws_subnet"</span> <span class="token string">"dmz_subnet_2c"</span> <span class="token punctuation">{</span>
+	vpc_id <span class="token operator">=</span> aws_vpc<span class="token punctuation">.</span>vpc<span class="token punctuation">.</span>id
+	cidr_block <span class="token operator">=</span> <span class="token string">"192.168.0.32/27"</span>
+	availability_zone <span class="token operator">=</span> <span class="token string">"ap-northeast-2c"</span>
+	tags <span class="token operator">=</span> <span class="token punctuation">{</span>
+		Name <span class="token operator">=</span> <span class="token string">"sub-terraform-dmz-2c"</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-resource "aws_subnet" "app_subnet_2a" {
-	vpc_id = aws_vpc.vpc.id
-	cidr_block = "192.168.0.64/26"
-	availability_zone = "ap-northeast-2a"
-	tags = {
-		Name = "sub-terraform-app-2a"
-	}
-}
+resource <span class="token string">"aws_subnet"</span> <span class="token string">"app_subnet_2a"</span> <span class="token punctuation">{</span>
+	vpc_id <span class="token operator">=</span> aws_vpc<span class="token punctuation">.</span>vpc<span class="token punctuation">.</span>id
+	cidr_block <span class="token operator">=</span> <span class="token string">"192.168.0.64/26"</span>
+	availability_zone <span class="token operator">=</span> <span class="token string">"ap-northeast-2a"</span>
+	tags <span class="token operator">=</span> <span class="token punctuation">{</span>
+		Name <span class="token operator">=</span> <span class="token string">"sub-terraform-app-2a"</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-resource "aws_subnet" "app_subnet_2c" {
-	vpc_id = aws_vpc.vpc.id
-	cidr_block = "192.168.0.128/26"
-	availability_zone = "ap-northeast-2c"
-	tags = {
-		Name = "sub-terraform-app-2c"
-	}
-}
+resource <span class="token string">"aws_subnet"</span> <span class="token string">"app_subnet_2c"</span> <span class="token punctuation">{</span>
+	vpc_id <span class="token operator">=</span> aws_vpc<span class="token punctuation">.</span>vpc<span class="token punctuation">.</span>id
+	cidr_block <span class="token operator">=</span> <span class="token string">"192.168.0.128/26"</span>
+	availability_zone <span class="token operator">=</span> <span class="token string">"ap-northeast-2c"</span>
+	tags <span class="token operator">=</span> <span class="token punctuation">{</span>
+		Name <span class="token operator">=</span> <span class="token string">"sub-terraform-app-2c"</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-resource "aws_subnet" "db_subnet_2a" {
-	vpc_id = aws_vpc.vpc.id
-	cidr_block = "192.168.0.192/27"
-	availability_zone = "ap-northeast-2a"
-	tags = {
-		Name = "sub-terraform-db-2a"
-	}
-}
+resource <span class="token string">"aws_subnet"</span> <span class="token string">"db_subnet_2a"</span> <span class="token punctuation">{</span>
+	vpc_id <span class="token operator">=</span> aws_vpc<span class="token punctuation">.</span>vpc<span class="token punctuation">.</span>id
+	cidr_block <span class="token operator">=</span> <span class="token string">"192.168.0.192/27"</span>
+	availability_zone <span class="token operator">=</span> <span class="token string">"ap-northeast-2a"</span>
+	tags <span class="token operator">=</span> <span class="token punctuation">{</span>
+		Name <span class="token operator">=</span> <span class="token string">"sub-terraform-db-2a"</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-resource "aws_subnet" "db_subnet_2c" {
-	vpc_id = aws_vpc.vpc.id
-	cidr_block = "192.168.0.224/27"
-	availability_zone = "ap-northeast-2c"
-	tags = {
-		Name = "sub-terraform-app-2c"
-	}
-}</code></pre></div>
+resource <span class="token string">"aws_subnet"</span> <span class="token string">"db_subnet_2c"</span> <span class="token punctuation">{</span>
+	vpc_id <span class="token operator">=</span> aws_vpc<span class="token punctuation">.</span>vpc<span class="token punctuation">.</span>id
+	cidr_block <span class="token operator">=</span> <span class="token string">"192.168.0.224/27"</span>
+	availability_zone <span class="token operator">=</span> <span class="token string">"ap-northeast-2c"</span>
+	tags <span class="token operator">=</span> <span class="token punctuation">{</span>
+		Name <span class="token operator">=</span> <span class="token string">"sub-terraform-app-2c"</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
 <p>여기서 <code class="language-text">aws_subnet</code> 를 생성할땐 <code class="language-text">vpc_id</code>값이 필요한데, VPC를 생성하고 AWS Web Console 화면에서 나온 VPC ID를 하드코딩 할 수 있지만, 매번 만들때마다 Code 수정이 필요한 작업이 필요하다,</p>
 <p><code class="language-text">Terraform.tfstate</code>에 보면 VPC ID가 저장되는데  <code class="language-text">aws_vpc.vpc.id</code>로 VPC ID를 가져 올 수 있다.</p>
 <p>자, 이제 apply를 하면 Subnet 생성된걸 확인 할 수 있다.</p>
@@ -190,4 +190,4 @@ VPC와 Subnet으로 끝나는 것이 아닌 AWS VPC Network 기본인 항목들�
 <li><a href="#3-2-vpc-%EC%83%9D%EC%84%B1">3-2. VPC 생성</a></li>
 <li><a href="#3-3-subnet-%EC%83%9D%EC%84%B1">3-3. Subnet 생성</a></li>
 </ul>
-</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/terraform/index_03/"><div class="direction">이전 글</div><div class="title">02. Terraform - 개발환경 구축하기</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/tech/steampipe/"><div class="direction">다음 글</div><div class="title">AWS Resource Management &quot;Steampipe&quot; Tool 활용하기</div></a></div></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2023<!-- --> <a href="https://github.com/loafer-wock">정욱현</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding-gatsby-blog</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/terraform/index_04/";window.___webpackCompilationHash="d904463210bccda89b9a";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-f196834924f88edde8fc.js"],"app":["/app-10a01d4af9decaf267e1.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-12b5d8159c7e67968cd6.js"],"component---src-pages-404-js":["/component---src-pages-404-js-29258485103e835516fd.js"],"component---src-pages-about-js":["/component---src-pages-about-js-e85b70281ebbcd61b432.js"],"component---src-pages-index-js":["/component---src-pages-index-js-02698fe531e86750398f.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-61e098d23291561f8395.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-addefa15e14ce4af818f.js"]};/*]]>*/</script><script src="/polyfill-f196834924f88edde8fc.js" nomodule=""></script><script src="/app-10a01d4af9decaf267e1.js" async=""></script><script src="/framework-de157c6b30d4790e4e81.js" async=""></script><script src="/webpack-runtime-097c9ad1c019db02919d.js" async=""></script></body></html>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/tech/restapi_02/"><div class="direction">이전 글</div><div class="title">02. Flask를 활용한 Rest API[GET] 구현해보기_02편</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/tech/steampipe/"><div class="direction">다음 글</div><div class="title">AWS Resource Management &quot;Steampipe&quot; Tool 활용하기</div></a></div></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2023<!-- --> <a href="https://github.com/loafer-wock">정욱현</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding-gatsby-blog</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/terraform/index_04/";window.___webpackCompilationHash="d904463210bccda89b9a";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-f196834924f88edde8fc.js"],"app":["/app-10a01d4af9decaf267e1.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-12b5d8159c7e67968cd6.js"],"component---src-pages-404-js":["/component---src-pages-404-js-29258485103e835516fd.js"],"component---src-pages-about-js":["/component---src-pages-about-js-e85b70281ebbcd61b432.js"],"component---src-pages-index-js":["/component---src-pages-index-js-02698fe531e86750398f.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-61e098d23291561f8395.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-addefa15e14ce4af818f.js"]};/*]]>*/</script><script src="/polyfill-f196834924f88edde8fc.js" nomodule=""></script><script src="/app-10a01d4af9decaf267e1.js" async=""></script><script src="/framework-de157c6b30d4790e4e81.js" async=""></script><script src="/webpack-runtime-097c9ad1c019db02919d.js" async=""></script></body></html>

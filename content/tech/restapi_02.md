@@ -20,7 +20,7 @@ categories: Tech
 ### - 예제 Code
 HelloWorld는 Root으로 두고 ```/myip```를 만들어보자
 
-```
+```python
 from flask import Flask
 from flask import request
 from flask import jsonify
@@ -49,10 +49,11 @@ if __name__=="__main__":
 
 아래 코드처럼 ```</>```를 사용하면 설정한 라우팅 경로외에 임의로 넣을 시 메시지를 넣어 리턴 해줄 수 있다!
 
-```
-#@app.route('/<block>')
-#def block(block):
-# return '사용할 수 없는 페이지입니다. 다시 한번확인 바랍니다.'
+```python
+@app.route('/<block>')
+
+def block(block):
+	return '사용할 수 없는 페이지입니다. 다시 한번확인 바랍니다.'
 ```
 
 ### - 결과
@@ -61,7 +62,8 @@ if __name__=="__main__":
 
 
 ```@app.route('api/임의값')```를 넣어서 json 형태로 주는 것도 가능하다!
-```
+
+```python
 @app.route('/api/<option>') #get echo api
 def get_echo_call(option):
     return jsonify({"option": option})

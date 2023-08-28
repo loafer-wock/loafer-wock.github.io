@@ -34,7 +34,7 @@ https://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/optimize_gpu.html
 > ```configuration:latency=0```이 아닌 `nouveau` 포함되어 있다면 `BlockList` 등록 필요
 
 
-```
+```bash
 #lshw는 기본적으로 설치되어 있지만 없다면 아래 명령어로 설치
 #sudo yum install lshw 
 
@@ -58,7 +58,7 @@ WARNING: you should run this program as super-user.
        resources: iomemory:40-3f iomemory:40-3f irq:10 memory:fd000000-fdffffff memory:440000000-44fffffff memory:450000000-451ffffff
 ```
 ---
-```
+```bash
 #nouveau driver disable 방법
 
 1. /etc/default/grep 수정
@@ -81,7 +81,7 @@ GRUB_CMDLINE_LINUX구분"console=ttyS~~" 안 끝에 noveau.modeset=0추가
 
 ### 1-2. 그래픽 드라이버 설치 전에 필요한 패키지 `yum install`
 
-```
+```bash
 sudo yum install gcc -y
 sudo yum install perl -y
 sudo yum install kernel-headers -y
@@ -94,7 +94,7 @@ sudo yum install kernel-devel-$(uname -r) kernel-headers-$(uname -r)
 ### 1-3. Xorg server 중지
 > xorg를 중지하지 않으면 설치 진행 안됨
 
-```
+```bash
 sudo systemctl isolate multi-user.target
 ```
 ---
@@ -104,7 +104,7 @@ sudo systemctl isolate multi-user.target
 `Product Type, Series`등 인스턴스가 지원하는 드라이버 타입에 맞춰 설정 후 다운로드
 ![](https://velog.velcdn.com/images/jtret2424/post/625b20ae-6283-448e-98bc-1bb5bb2d2b15/image.png)
 
-```
+```bash
 wget https://us.download.nvidia.com/tesla/525.85.12/NVIDIA-Linux-x86_64-525.85.12.run
 ```
 ---
@@ -112,7 +112,7 @@ wget https://us.download.nvidia.com/tesla/525.85.12/NVIDIA-Linux-x86_64-525.85.1
 ## 3. 설치
 
 ### 3-1. 다운로드 받은 `NVIDIA-Linux-*.run` 파일 실행
-```
+```bash
 sudo sh NVIDIA-Linux-x86_64-525.85.12.run
 ```
 > 실행하게 되면 로딩 이후 아래와 같은 화면이 나오는데 긍정적(Yes, Ok 등)인 말만 선택해서 진행하도록 하자
@@ -120,7 +120,7 @@ sudo sh NVIDIA-Linux-x86_64-525.85.12.run
 ![](https://velog.velcdn.com/images/jtret2424/post/f9f8598c-13bf-4814-8217-f2ef99f20b7f/image.png)
 
 ### 3-2. 설치 확인
-```
+```bash
 nvidia-smi
 
 +-----------------------------------------------------------------------------+

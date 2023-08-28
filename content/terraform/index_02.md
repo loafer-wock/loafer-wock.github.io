@@ -39,7 +39,7 @@ categories: terraform
 ~~(사실 module, variable, locals 등 알게 될텐데 코드랑 친하지 않은 사람들이라면 "엥?ㅇㅅㅇ" 할 수도 있다... 나는 module에서 힘들었다..)~~
 
 
-```
+```js
 #VPC 생성 예제
 
 provider "aws" {

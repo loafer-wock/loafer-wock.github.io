@@ -28,13 +28,15 @@ Steampipe는 ```gRPC``` 형태로 메시지를 각 ```Plugin```을 이용해 클
 #### 2-2. Linux OS 환경의 Install 
 
 1. Steampipe Install
-```
+
+```bash
 $ sudo /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/turbot/steampipe/main/install.sh)"
 
 ```
 
 2. Steampipe AWS Plugin Install 
-```
+
+```bash
 $ steampip plugin install aws
 ```  
 
@@ -49,7 +51,8 @@ $ steampip plugin install aws
 생성한 ```VPC Name Tag```를 가져와보자!
 
 먼저 ```steampipe query``` 에 접속을 하고 쓸수 있는 ```tables``` 목록을 보자
-```
+
+```bash
 $ steampipe query
 
 > .tables
@@ -63,7 +66,7 @@ $ steampipe query
 
 아래 명령을 사용하면 ```aws_vpc```에서 사용가능한 ```column``` 확인이 가능하다!
 
-```
+```bash
 .inspect aws_vpc				
 ```
 ![](https://velog.velcdn.com/images/jtret2424/post/a653822d-cb7a-4aec-aba6-1c3f54f43f8f/image.png)
@@ -76,7 +79,7 @@ $ steampipe query
 ---
 ### 2-6. select [column] from [table]
 
-```
+```sql
 select
 	tags
 from
@@ -91,7 +94,7 @@ from
 
 생성된 EC2의 ```ID```, ```Type```, ```IP```, ```Tags```를 가져와보자.
 
-```
+```sql
 > select 
 	instance_id,
 	instance_type,
@@ -107,7 +110,8 @@ from
 ## 3. 특정 Type 값만 가져오기
 
 EC2의 ```Type```값을 가지고 있는 목록 불러와보자!
-```
+
+```sql
 > select 
 	instance_id,
 	instance_type,

@@ -36,7 +36,7 @@ Terraform에서는 Key를 ```provider.tf``` 파일에 ```하드코딩```하는 �
 
 위에서 만든 ```terraform``` 디렉토리 아래 ```provider.tf``` 파일을 만들어서 Key를 넣어주자
 
-```
+```js
 provider "aws" {
     access_key  = "[ACCESS KEY]"
     secret_key  = "[SECRET_KEY]"
@@ -51,7 +51,7 @@ VPC에 생성에 필요한 소스는 아래 Terraform  document 에서 볼 수 �
 
 > https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc
 
-```
+```js
 resource "aws_vpc" "vpc" {
     cidr_block = "192.168.0.0/24"
     enable_dns_hostnames = true
@@ -77,7 +77,7 @@ VPC가 생성된 것을 볼수가 있다!
 
 Subnet은 ```VPC Resource```를 만든 ```network.tf```안에 아래와 같이 작성해보자
 
-```
+```js
 ### VPC ###
 resource "aws_vpc" "vpc" {
     cidr_block = "192.168.0.0/24"

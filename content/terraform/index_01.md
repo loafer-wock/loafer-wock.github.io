@@ -31,6 +31,7 @@ AWS뿐만이 아니라 GCP,Azure,Kubenetes 등 여러 인프라를 코드로 구
 우리가 EC2를 만들기 위해 VPC, Subnet, IGW, NAT Gateway, Security Groups 등등 클릭하면서 설정해야하는 방면 Terraform에서는 간단한 코드로 배포 할 수 있다.
 
 예제코드 (VPC 생성)
+
 ```js
 resource "aws_vpc" "vpc" {
 	cidr_block = "10.0.0.0/16"

@@ -24,9 +24,10 @@ Flask는 Python를 기반하고 있는 ```Micro Web Framework``` 다.
 우선 ```Flask``` 라이브러리를 설치해야한다.
 아래 명령어로 설치해보자!
 
-```
+```bash
 $ pip install flask
 $ pip install flask-restx
+
 ```
 
 
@@ -34,7 +35,7 @@ $ pip install flask-restx
 
 원하는 디렉토리 안에 ```app.py``` 파일을 생성하여 아래 코드를 넣고 저장한다.
 
-```
+```python
 from flask import Flask
 
 app = Flask (__name__)
@@ -72,7 +73,7 @@ if __name__=="__main__":
 접근할때 ```http://127.0.01:5000``` 주소로 접근했지만 ```http://127.0.01:5000/api``` 에 접근하려면 코드는 아래과 같다.
 
 
-```
+```python
 from flask import Flask
 
 app = Flask (__name__)

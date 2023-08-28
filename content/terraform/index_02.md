@@ -7,7 +7,7 @@ tags: terraform
 categories: terraform
 ---
 
-
+![](https://velog.velcdn.com/images/jtret2424/post/35b7a40f-246c-46c0-8648-7397bfee914a/image.gif)
 
 ## Terraform 동작하는 과정
 

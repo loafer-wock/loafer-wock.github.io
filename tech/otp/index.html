@@ -82,17 +82,17 @@
 <h2 id="2-mfa-code-생성-및-설정" style="position:relative;"><a href="#2-mfa-code-%EC%83%9D%EC%84%B1-%EB%B0%8F-%EC%84%A4%EC%A0%95" aria-label="2 mfa code 생성 및 설정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. MFA Code 생성 및 설정</h2>
 <p>2-1. MFA등록를 위해서는 아래 명령어를 통해 MFA설정 할 수 있다.</p>
 <blockquote>
-<p>MFA는 <code class="language-text">계정별로 Code생성</code>되며 <code class="language-text">리눅스 유저 계정</code>마다 다른<code class="language-text">인증 Key</code>가 설치된다.</p>
+<p>MFA는 <code class="language-text">계정별로 Code생성</code>되며 <code class="language-text">리눅스 유저 계정</code>마다 다른<code class="language-text">인증 Key</code>가 설치된다.
+동일한 MFA를 사용을 위해서는 <code class="language-text">.google_authenticator</code> 를 옮겨주어야한다.</p>
 </blockquote>
-<p>동일한 MFA를 사용을 위해서는 <code class="language-text">.google_authenticator</code> 를 옮겨주어야한다.</p>
 <p>2-2. 아래 명령어로 OTP Code 생성</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token punctuation">[</span>sysadmin@ip ~<span class="token punctuation">]</span>$ google-authenticator </code></pre></div>
 <p>2-3. 인증 토큰을 시간 기반으로 사용할껀지에 대한 설정</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">Do you want authentication tokens to be time-based (y/n) y</code></pre></div>
 <blockquote>
-<p>2-2 이후 QR 메세지는 최초 1회만 발생하는 메세지라 잃어버리면 곤란하게될수도 있다.</p>
+<p>2-2 이후 QR 메세지는 최초 1회만 발생하는 메세지라 잃어버리면 곤란하게될수도 있다.
+QR 이미지로 저장하는 방법 또는 제공되는 RUL 이용하자!</p>
 </blockquote>
-<p>QR 이미지로 저장하는 방법 또는 제공되는 RUL 이용하자!</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">Warning: pasting the following URL into your browser exposes the OTP secret to Google:
   https://www.google.com/chart?chs<span class="token operator">=</span>200x200<span class="token operator">&amp;</span><span class="token assign-left variable">chld</span><span class="token operator">=</span>M<span class="token operator">|</span><span class="token number">0</span><span class="token operator">&amp;</span><span class="token assign-left variable">cht</span><span class="token operator">=</span>qr<span class="token operator">&amp;</span><span class="token assign-left variable">chl</span><span class="token operator">=</span>otpauth://totp/sysadmin@ip-10-123-6-178.ap-northeast-2.compute.internal%3Fsecret%3DZLKATAC3YU6B7T3YPS6UXHZ3NA%26issuer%3Dip-10-123-6-178.ap-northeast-2.compute.internal
 
@@ -120,9 +120,9 @@ your chances to notice or even prevent man-in-the-middle attacks <span class="to
 <hr>
 <p>2-6. 시간차이로 인한 이전 혹은 다음 인증코드 사용 여부</p>
 <blockquote>
-<p>OTP는 30초마다 토큰이 생성되지만, 시간차이로 인해서 문제가 발생할 것을 대비한</p>
+<p>OTP는 30초마다 토큰이 생성되지만, 시간차이로 인해서 문제가 발생할 것을 대비한
+이전 코드, 현재 코드, 다음 코드를 사용할 수 있도록 하는 설정</p>
 </blockquote>
-<p>이전 코드, 현재 코드, 다음 코드를 사용할 수 있도록 하는 설정</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">By default, a new token is generated every <span class="token number">30</span> seconds by the mobile app.
 In order to compensate <span class="token keyword">for</span> possible time-skew between the client and the server,
 we allow an extra token before and after the current time. This allows <span class="token keyword">for</span> a

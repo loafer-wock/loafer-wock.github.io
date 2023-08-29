@@ -41,7 +41,7 @@ sudo yum install google-authenticator -y
 2-1. MFA등록를 위해서는 아래 명령어를 통해 MFA설정 할 수 있다.
 
 > MFA는 `계정별로 Code생성`되며 `리눅스 유저 계정`마다 다른`인증 Key`가 설치된다.
-동일한 MFA를 사용을 위해서는 `.google_authenticator` 를 옮겨주어야한다.
+> 동일한 MFA를 사용을 위해서는 `.google_authenticator` 를 옮겨주어야한다.
 
  
 2-2. 아래 명령어로 OTP Code 생성
@@ -56,7 +56,7 @@ Do you want authentication tokens to be time-based (y/n) y
 ```
 
 >2-2 이후 QR 메세지는 최초 1회만 발생하는 메세지라 잃어버리면 곤란하게될수도 있다.
-QR 이미지로 저장하는 방법 또는 제공되는 RUL 이용하자!
+>QR 이미지로 저장하는 방법 또는 제공되는 RUL 이용하자!
 
 ```bash
 Warning: pasting the following URL into your browser exposes the OTP secret to Google:
@@ -94,7 +94,7 @@ your chances to notice or even prevent man-in-the-middle attacks (y/n) y
 ---
 2-6. 시간차이로 인한 이전 혹은 다음 인증코드 사용 여부
 > OTP는 30초마다 토큰이 생성되지만, 시간차이로 인해서 문제가 발생할 것을 대비한
-이전 코드, 현재 코드, 다음 코드를 사용할 수 있도록 하는 설정
+> 이전 코드, 현재 코드, 다음 코드를 사용할 수 있도록 하는 설정
 
 ```bash
 By default, a new token is generated every 30 seconds by the mobile app.

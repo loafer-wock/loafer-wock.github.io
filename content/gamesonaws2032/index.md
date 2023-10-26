@@ -1,7 +1,7 @@
 ---
 emoji: 😀
 title: Games On AWS 2023 후기.
-date: '2023-08-25 00:00:00'
+date: '2023-10-26 00:00:00'
 author: 정욱현
 tags: 일상
 categories: 일상
